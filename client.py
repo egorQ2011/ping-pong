@@ -6,6 +6,7 @@ from threading import Thread
 # ---ПУГАМЕ НАЛАШТУВАННЯ ---
 WIDTH, HEIGHT = 800, 600
 init()
+mixer.init
 screen = display.set_mode((WIDTH, HEIGHT))
 clock = time.Clock()
 display.set_caption("Пінг-Понг")
@@ -43,7 +44,10 @@ font_main = font.Font(None, 36)
 # --- ЗОБРАЖЕННЯ ----
 
 # --- ЗВУКИ ---
-
+bg_music = mixer.music.load("8Bit Title Screen")
+hit_sound = mixer.Sound("laser1")
+lus_music = mixer.music.load("the_field_of_dreams")
+win_music = mixer.music.load("Beyond The Clouds (Dungeon Plunder)")
 # --- ГРА ---
 game_over = False
 winner = None
@@ -98,7 +102,7 @@ while True:
         if game_state['sound_event']:
             if game_state['sound_event'] == 'wall_hit':
                 # звук відбиття м'ячика від стін
-                pass
+                hit_sound.play()
             if game_state['sound_event'] == 'platform_hit':
                 # звук відбиття м'ячика від платформи
                 pass
